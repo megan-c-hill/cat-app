@@ -108,6 +108,26 @@
   margin-left: 0.5rem;
 }
 
+.rowDiv {
+  display: flex;
+  flex-direction: row
+}
+
+.columnDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.submitButton {
+  background-color: #0070f3;
+  color: #fafafa;
+  border-radius: 4px;
+  border-width: 0;
+  padding: 0 24px;
+  margin-left: 8px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
