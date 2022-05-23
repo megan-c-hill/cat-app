@@ -13,7 +13,7 @@ const Home = () => {
     const [selectedImageType, setSelectedImageType] = useState('any-type');
     
     const getCats = async () => {
-        const catsFromApi = await get(`/api/cats?pageSize=${selectedNumberOfCats}&breedId=${selectedBreed}&imageType=${selectedImageType}&sortMethod=${selectedSortMethod}`);
+        const catsFromApi = await get(`/api/cats?pageSize=${selectedNumberOfCats}&breedId=${selectedBreed}&imageType=${selectedImageType}&sortMethod=${selectedSortMethod}&dogFriendly=${selectedDogFriendly}`);
 
         setCats(catsFromApi);
     }
