@@ -110,13 +110,22 @@
 
 .rowDiv {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .columnDiv {
   display: flex;
   flex-direction: column;
   margin: 8px;
+}
+
+.img {
+  display: block;
+  max-width:250px;
+  max-height:120px;
+  width: auto;
+  height: auto;
 }
 
 .submitButton {
