@@ -9,15 +9,21 @@ const handler = async (req, res) => {
     if(!checkAuthz(req)) {
         return res.status(401);
     }
+    
+    console.log('req.query', req.query);
 
     const {pageSize, breedId, imageType, sortMethod, dogFriendly} = req.query;
     
+    console.log('req.query.imageType', req.query.imageType);
+    
     let url = `/images/search?limit=${pageSize}`
     url = breedId !== 'any-breed' ? url + `&breed_ids=${breedId}` : url;
-    url = imageType === 'animated' ? url + `&mime_types=gif` : imageType === 'static' ? url + '&mime_type=jpg,png' : url;
+    url = imageType === 'animated' ? url + `&mime_types=gif` : imageType === 'static' ? url + '&mime_types=jpg,png' : url;
     url = sortMethod === 'most-recent' ? url + '&order=desc' : url + '&order=rand';
 
-    if(dogFriendly) {
+    console.log('dogFriendly', Boolean(dogFriendly));
+    if(dogFriendly === 'true') {
+        console.log('here');
         const apiBreeds = await catAppGet('/breeds');
 
         const mappedBreeds = mapBreeds(apiBreeds);
@@ -26,6 +32,8 @@ const handler = async (req, res) => {
 
         url += mappedBreeds.filter((breed) => breed.dogFriendly).map((breed) => breed.id).join('&')
     }
+    
+    console.log('url', url);
 
     const catAppCats = await catAppGet(url);
 
